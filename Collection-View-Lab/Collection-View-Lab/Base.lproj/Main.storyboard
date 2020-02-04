@@ -19,7 +19,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fXY-sC-bAS">
                                 <rect key="frame" x="1" y="144" width="413" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xaX-NU-pWt">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xaX-NU-pWt">
                                     <size key="itemSize" width="204" height="209"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -83,6 +83,7 @@
                     <navigationItem key="navigationItem" id="zIP-eU-JDi"/>
                     <connections>
                         <outlet property="collectionView" destination="fXY-sC-bAS" id="xUa-nH-e9Y"/>
+                        <outlet property="searchBar" destination="jSU-dp-bfn" id="MYz-kK-EwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,26 +102,40 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="230"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ3-7U-g9k">
-                                <rect key="frame" x="20" y="326" width="374" height="536"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="28"/>
+                                <rect key="frame" x="20" y="326" width="374" height="299"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-0h-UbZ">
+                                <rect key="frame" x="20" y="651" width="374" height="31"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="iRi-0h-UbZ" firstAttribute="top" secondItem="wZ3-7U-g9k" secondAttribute="bottom" constant="26" id="880-IU-9pk"/>
+                            <constraint firstItem="iRi-0h-UbZ" firstAttribute="leading" secondItem="Doo-Sw-t2S" secondAttribute="leading" constant="20" id="C1N-Vm-ROM"/>
+                            <constraint firstItem="Doo-Sw-t2S" firstAttribute="trailing" secondItem="iRi-0h-UbZ" secondAttribute="trailing" constant="20" id="Phk-rX-dbZ"/>
                             <constraint firstItem="emS-af-IJe" firstAttribute="top" secondItem="Doo-Sw-t2S" secondAttribute="top" constant="0.10000000000000001" id="Y48-6N-nTg"/>
                             <constraint firstItem="wZ3-7U-g9k" firstAttribute="leading" secondItem="Doo-Sw-t2S" secondAttribute="leading" constant="20" id="aEw-fC-92J"/>
                             <constraint firstItem="emS-af-IJe" firstAttribute="leading" secondItem="Doo-Sw-t2S" secondAttribute="leading" constant="0.10000000000000001" id="cmJ-Uz-DU0"/>
                             <constraint firstItem="emS-af-IJe" firstAttribute="trailing" secondItem="Doo-Sw-t2S" secondAttribute="trailing" constant="0.10000000000000001" id="eRu-sQ-aWE"/>
                             <constraint firstItem="wZ3-7U-g9k" firstAttribute="top" secondItem="emS-af-IJe" secondAttribute="bottom" constant="8" id="g8C-ZI-oV0"/>
-                            <constraint firstItem="Doo-Sw-t2S" firstAttribute="bottom" secondItem="wZ3-7U-g9k" secondAttribute="bottom" constant="0.10000000000000001" id="lMb-SA-Zj6"/>
+                            <constraint firstItem="Doo-Sw-t2S" firstAttribute="bottom" secondItem="wZ3-7U-g9k" secondAttribute="bottom" constant="237" id="lMb-SA-Zj6"/>
                             <constraint firstItem="emS-af-IJe" firstAttribute="height" secondItem="TXC-36-eFI" secondAttribute="height" multiplier="0.256696" id="uHp-Nt-gaI"/>
                             <constraint firstItem="Doo-Sw-t2S" firstAttribute="trailing" secondItem="wZ3-7U-g9k" secondAttribute="trailing" constant="20" id="xMg-bf-h9D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Doo-Sw-t2S"/>
                     </view>
                     <navigationItem key="navigationItem" id="jD6-dL-oXA"/>
+                    <connections>
+                        <outlet property="countryImage" destination="emS-af-IJe" id="quP-3U-H1H"/>
+                        <outlet property="countryLabel" destination="wZ3-7U-g9k" id="jZX-sY-3Mr"/>
+                        <outlet property="exchangeRate" destination="iRi-0h-UbZ" id="Kbg-x2-2sQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Q-lW-Fbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

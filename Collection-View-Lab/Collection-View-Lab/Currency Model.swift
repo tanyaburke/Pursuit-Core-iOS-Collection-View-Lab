@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct ExchangeRate: Codable{
-    let rates: [Rates]
-}
-
-struct Rates: Codable{
-   let USD: Double
-    
+struct ExchangeRate: Decodable {
+    let rates: [String: Double]
 }

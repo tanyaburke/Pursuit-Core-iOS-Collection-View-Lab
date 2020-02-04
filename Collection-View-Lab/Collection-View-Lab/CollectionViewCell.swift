@@ -34,7 +34,7 @@ class CollectionViewCell: UICollectionViewCell {
                     DispatchQueue.main.async {
                         self?.countryImage.image = image
                         
-                        self!.countryNameAndCap.text = "Name: \(country.name)\nCapital: \(country.capital)"
+                        self!.countryNameAndCap.text = " \(country.name)\nCapital: \(country.capital)"
                     }
                 }
             }

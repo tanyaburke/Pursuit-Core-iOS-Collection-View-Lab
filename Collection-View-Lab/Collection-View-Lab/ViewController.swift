@@ -26,7 +26,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
         
-        private var countries = [Countries](){
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+
+    private var countries = [Countries](){
             didSet{
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -38,21 +41,29 @@ class ViewController: UIViewController {
             super.viewDidLoad()
             collectionView.dataSource = self
             collectionView.delegate = self
+            searchBar.delegate = self
             collectionView.backgroundColor = .blue
-            fetchDogImages()
+            fetchDogImages(searchQuery: "united")
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController, let indexPath = collectionView.indexPathsForSelectedItems?.first else{
+            fatalError("couldnt pass country")
+        }
+        detailVC.country = countries[indexPath.row]
+    }
         
-        private func fetchDogImages(){
-            CountryListAPI.getListOfCountries{ [weak self](result) in
-                switch result {
-                case .failure(let appError):
-                    print("could not fetch dog images\(appError)")
-                case .success(let data):
-                    self?.countries = data
+    private func fetchDogImages(searchQuery: String){
+            CountryListAPI.getListOfCountries(query: searchQuery) { [weak self](result) in
+                    switch result {
+                    case .failure(let appError):
+                        print("could not fetch dog images\(appError)")
+                    case .success(let data):
+                        self?.countries = data
+                    }
                 }
             }
-        }
-
+            
     }
 
     extension ViewController: UICollectionViewDataSource{
@@ -93,3 +104,16 @@ class ViewController: UIViewController {
         }
 
 }
+
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let searchText = searchBar.text?.lowercased() else {
+            print("missing search text")
+            return
+        }
+        fetchDogImages(searchQuery: searchText)
+    }
+}
+
+
